@@ -28,7 +28,7 @@ namespace CodedUIHandCoded
         public void CodedUITestOne()
         {
             homePage.SearchGoogle("Hello Google");
-            
+            // TODO: Add assertions
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace CodedUIHandCoded
         public void CodedUITestTwo()
         {
             homePage.SearchGoogle("Hello again Google");
-
+            // TODO: Add assertions
         }
 
     }
