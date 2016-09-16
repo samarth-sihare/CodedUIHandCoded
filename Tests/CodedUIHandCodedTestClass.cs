@@ -23,11 +23,20 @@ namespace CodedUIHandCoded
     public class CodedUIHandCodedTestClass : CodedUIHandCodedTestBase
     {
 
+
+        //Make sure to save CSV data file as Unicode(UFT-8 without signature) - Codepage 65001 using File-->Advance Save Options...
+        //Also rightclick on file-->properties and set "Copy to Output Directory" to always copy
+
+
         [TestMethod]
+        [DeploymentItem("Data.csv")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\DataFiles\\Data.csv", "Data#csv", DataAccessMethod.Sequential)]
         [Sequence(1)]
         public void CodedUITestOne()
         {
-            homePage.SearchGoogle("Hello Google");
+            string searchText = TestContext.DataRow["searchtext"].ToString();
+
+            homePage.enterSearchText(searchText);
             // TODO: Add assertions
         }
 

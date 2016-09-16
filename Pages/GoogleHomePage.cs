@@ -38,10 +38,20 @@ namespace CodedUIHandCoded
         }
 
 
-        public void SearchGoogle(String searchText)
+        public void SearchGoogle(string searchText)
         {
             searchTextBox().Text = searchText;
             //Keyboard.SendKeys(searchTextBox, "Hello Google");
+            Mouse.Click(searchBtn());
+        }
+
+        public void enterSearchText(string searchText)
+        {
+            searchTextBox().Text = searchText;
+        }
+
+        public void clickSearchBtn()
+        {
             Mouse.Click(searchBtn());
         }
     }
