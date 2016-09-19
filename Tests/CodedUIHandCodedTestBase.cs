@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using CodedUIHandCoded.Utilities;
 
 namespace CodedUIHandCoded.Tests
 {
@@ -25,6 +26,9 @@ namespace CodedUIHandCoded.Tests
         [TestInitialize()]
         public void MyTestInitialize()
         {
+            //This can be used to get data from collection using the method ReadData(RowNumber, "ColumnName")
+            ExcelUtil.PopulateInCollection("../../../DataFiles/Data.xlsx", "GoogleHomePage");
+            
             string ApplicationUnderTestURL = ConfigurationManager.AppSettings["ApplicationUnderTestURL"].ToString();
 
             //BrowserWindow.CurrentBrowser = "Chrome";
@@ -38,7 +42,6 @@ namespace CodedUIHandCoded.Tests
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
             Playback.Cleanup();
         }
 

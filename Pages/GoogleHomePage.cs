@@ -23,7 +23,9 @@ namespace CodedUIHandCoded
             searchBtn.TechnologyName = "Web";
             searchBtn.SearchProperties.Add(HtmlButton.PropertyNames.Class, "lsb");
             searchBtn.SearchProperties.Add(HtmlButton.PropertyNames.Name, "btnG");
-
+            
+            //If required user can use DrawHighLight to draw blue highlight around control for diagnostics
+           // searchBtn.DrawHighlight();
             return searchBtn;
         }
 
@@ -34,6 +36,8 @@ namespace CodedUIHandCoded
             searchTextBox.SearchProperties.Add(HtmlEdit.PropertyNames.ControlType, "Edit");
             searchTextBox.SearchProperties.Add(HtmlEdit.PropertyNames.Id, "lst-ib");
 
+            //If required user can use DrawHighLight to draw blue highlight around control for diagnostics
+            // searchTextBox.DrawHighlight();
             return searchTextBox;
         }
 
@@ -42,6 +46,7 @@ namespace CodedUIHandCoded
         {
             searchTextBox().Text = searchText;
             //Keyboard.SendKeys(searchTextBox, "Hello Google");
+            
             Mouse.Click(searchBtn());
         }
 
