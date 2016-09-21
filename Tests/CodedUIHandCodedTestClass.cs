@@ -43,9 +43,15 @@ namespace CodedUIHandCoded
         }
 
         //Data Driven using excel (using conventional DataSource attribute)
+        /// <summary>
+        /// If you get a connection error, it's most likely due to the fact that 
+        /// you don't have the 2007 Office System Driver installed for the OLEDB provider. 
+        /// You can download it from the following Microsoft link:
+        /// http://www.microsoft.com/en-us/download/details.aspx?id=23734
+        /// </summary>
         [TestMethod]
         [DeploymentItem("Data.xlsx")]
-        [DataSource("System.Data.Odbc", "Dsn=Excel Files;Driver={Microsoft Excel Driver (*.xlsx)};dbq=|DataDirectory|\\Data.xlsx;defaultdir=.;driverid=790;maxbuffersize=2048;pagetimeout=5;readonly=true", "GoogleHomePage$", DataAccessMethod.Sequential)]
+        [DataSource("System.Data.Odbc", "Dsn=Excel Files;Driver={Microsoft Excel Driver (*.xlsx)};dbq=|DataDirectory|\\DataFiles\\Data.xlsx;defaultdir=.;driverid=790;maxbuffersize=2048;pagetimeout=5;readonly=true", "GoogleHomePage$", DataAccessMethod.Sequential)]
         public void CodedUITest2()
         {
             string searchText = TestContext.DataRow["SearchText"].ToString();
