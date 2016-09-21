@@ -34,7 +34,7 @@ namespace CodedUIHandCoded
         [DeploymentItem("Data.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\DataFiles\\Data.csv", "Data#csv", DataAccessMethod.Sequential)]
         [Sequence(1)]
-        public void CodedUITestOne()
+        public void CodedUITest1()
         {
             string searchText = TestContext.DataRow["searchtext"].ToString();
 
@@ -45,8 +45,8 @@ namespace CodedUIHandCoded
         //Data Driven using excel (using conventional DataSource attribute)
         [TestMethod]
         [DeploymentItem("Data.xlsx")]
-        [DataSource("System.Data.Odbc", "Dsn=Excel Files;Driver={Microsoft Excel Driver (*.xls)};dbq=|DataDirectory|\\Data.xlsx;defaultdir=.;driverid=790;maxbuffersize=2048;pagetimeout=5;readonly=true", "GoogleHomePage$", DataAccessMethod.Sequential)]
-        public void CodedUITestTwo()
+        [DataSource("System.Data.Odbc", "Dsn=Excel Files;Driver={Microsoft Excel Driver (*.xlsx)};dbq=|DataDirectory|\\Data.xlsx;defaultdir=.;driverid=790;maxbuffersize=2048;pagetimeout=5;readonly=true", "GoogleHomePage$", DataAccessMethod.Sequential)]
+        public void CodedUITest2()
         {
             string searchText = TestContext.DataRow["SearchText"].ToString();
 
@@ -57,7 +57,7 @@ namespace CodedUIHandCoded
         //Data Driven using excel (using custom methods for reading data from excel)
         [TestMethod]
         [Requires("CodedUITestOne")]
-        public void CodedUITestThree()
+        public void CodedUITest3()
         {
             DataTable dt = ExcelUtil.ImportDataFromExcelToDataTable("../../../DataFiles/Data.xlsx", "GoogleHomePage");
 
@@ -68,6 +68,23 @@ namespace CodedUIHandCoded
 
                 // TODO: Add assertions 
             }
+        }
+
+        [TestMethod]
+        [DeploymentItem("LoginData.csv")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\DataFiles\\LoginData.csv", "LoginData#csv", DataAccessMethod.Sequential)]
+        public void CoidedUITest4()
+        {
+            string user = TestContext.DataRow["Email"].ToString();
+            string password = TestContext.DataRow["Password"].ToString();
+            //Another way for .ToString()
+            string expectedErrorMessage = TestContext.DataRow["ErrorMessage"].ToString();
+            homePage.clickSignInBtn();
+            signInPage.EnterCredentials(user, password);
+
+            // TODO: Add assertions 
+            Assert.AreEqual(expectedErrorMessage, signInPage.getLoginErrorMessage().Trim(), "The Error Message was not as expected");
+
         }
 
     }

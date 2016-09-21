@@ -41,6 +41,14 @@ namespace CodedUIHandCoded
             return searchTextBox;
         }
 
+        private HtmlHyperlink signInBtn()
+        {
+            HtmlHyperlink signInBtn = new HtmlHyperlink(browser);
+            signInBtn.TechnologyName = "Web";
+            signInBtn.SearchProperties.Add(HtmlHyperlink.PropertyNames.Id, "gb_70");
+            signInBtn.SearchProperties.Add(HtmlHyperlink.PropertyNames.InnerText, "Sign in");
+            return signInBtn;
+        }
 
         public void SearchGoogle(string searchText)
         {
@@ -59,5 +67,12 @@ namespace CodedUIHandCoded
         {
             Mouse.Click(searchBtn());
         }
+        public void clickSignInBtn()
+        {
+            Mouse.Click(signInBtn());
+        }
+    
     }
+
+
 }

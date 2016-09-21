@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using CodedUIHandCoded.Utilities;
+using CodedUIHandCoded.Pages;
 
 namespace CodedUIHandCoded.Tests
 {
@@ -19,6 +20,7 @@ namespace CodedUIHandCoded.Tests
 
         protected BrowserWindow browser;
         protected GoogleHomePage homePage;
+        protected GoogleSignInPage signInPage;
 
         #region Additional Test SetUp and CleanUp
 
@@ -36,6 +38,7 @@ namespace CodedUIHandCoded.Tests
             browser.Maximized = true;
 
             homePage = new GoogleHomePage(browser);
+            signInPage = new GoogleSignInPage(browser);
         }
 
         //Use TestCleanup to run code after each test has run
